@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import './App.css';
-
+import axios from 'axios';
+import { getAllPosts } from './actions/postAction';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const dispatch = useDispatch();
+	const dtttt = bindActionCreators(getAllPosts, dispatch);
+	const state = useSelector((dd) => dd);
+	console.log(state);
+	useEffect(() => {
+		dtttt();
+	}, []);
+	return (
+		<div className='App'>
+			<p>HELLO WORLD</p>
+		</div>
+	);
 }
 
 export default App;
